@@ -3,5 +3,8 @@ module.exports = defineConfig({
   transpileDependencies: true
 })
 module.exports = {
-  publicPath: '/nexo/'
+  publicPath: '/nexo/',
+  devServer: {
+    historyApiFallback: true,
+  },
 }
