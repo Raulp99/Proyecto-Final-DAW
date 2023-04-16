@@ -1,16 +1,16 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import LeagueOfLegends from "../views/league-of-legends.vue";
+import Inicio from "../views/seleccion_juego.vue";
 
 const routes = [
   {
-    path: '${process.env.BASE_URL}league-of-legends',
-    name: 'LeagueOfLegends',
-    component: LeagueOfLegends
+    path: "/",
+    name: "Inicio",
+    component: Inicio
   }
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(process.env.BASE_URL),
+  history: createWebHashHistory(),
   routes
 });
 

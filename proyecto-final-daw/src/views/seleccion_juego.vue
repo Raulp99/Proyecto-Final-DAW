@@ -136,7 +136,13 @@
     </footer>
   </div>
 </template>
-<script></script>
+<!-- eslint-disable-next-line vue/multi-word-component-names -->
+<script>
+
+export default {
+  name: "VistaSeleccionJuego",
+};
+</script>
 
 <style>
 #app {

@@ -136,7 +136,6 @@
     </footer>
   </div>
 </template>
-<script></script>
 
 <style>
 #app {
@@ -148,13 +147,11 @@
   box-sizing: border-box;
   background-color: #e7e7e7;
 }
-
 .navbar-custom {
   background: #24222e;
   padding: 20px;
   color: #fff;
 }
-
 .header-container {
   position: relative;
   height: 70vh;
@@ -162,7 +159,6 @@
   background-position: center;
   background-size: cover;
 }
-
 .header-overlay {
   position: absolute;
   top: 0;
@@ -172,7 +168,6 @@
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(2px);
 }
-
 .header-text {
   position: absolute;
   top: 50%;
@@ -181,37 +176,30 @@
   text-align: left;
   color: #fff;
 }
-
 .header-text h1 {
   font-size: 6rem;
   margin-bottom: 1rem;
 }
-
 .header-text h2 {
   font-size: 2rem;
 }
-
 .header-titulo {
   text-align: left;
 }
-
 .header-titulo a {
   text-decoration: none;
   color: #f0f0f0;
 }
-
 .header-titulo a:hover {
   text-decoration: none;
   color: #527cd6cb;
 }
-
 footer {
   background: #636363;
   padding: 20px;
   color: #fff;
   margin-top: 130px;
 }
-
 .juego {
   border-radius: 2%;
   font-weight: bold;
@@ -219,7 +207,6 @@ footer {
   text-transform: capitalize;
   transition: 0.3s;
 }
-
 .juego .titulo {
   text-align: center;
   margin-top: 50%;
@@ -229,66 +216,56 @@ footer {
   backdrop-filter: blur(4px);
   border-radius: 2%;
 }
-
 .juego:hover {
   color: #636363;
   transform: translate(0, -10px);
 }
-
 .csgo {
   background-image: url(@/assets/fondo-counter-strike.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
-
 .lol {
   background-image: url(@/assets/lol-card-image.png);
   background-size: cover;
   background-repeat: no-repeat;
 }
-
 .valorant {
   background-image: url(@/assets/fondo-valorant.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
-
 .apex {
   background-image: url(@/assets/fondo-apex-legends.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
-
 .dota2 {
   background-image: url(@/assets/fondo-dota2.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
-
 .fortnite {
   background-image: url(@/assets/fondo-fortnite.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
-
 .overwatch2 {
   background-image: url(@/assets/fondo-overwatch2.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
-
 .rainbow6 {
   background-image: url(@/assets/fondo-rainbow6.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
-
 .licenciaCC a {
   text-decoration: none;
 }
