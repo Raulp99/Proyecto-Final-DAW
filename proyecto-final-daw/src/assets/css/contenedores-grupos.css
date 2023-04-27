@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit&display=swap");
+
+.contenedor-buscar-grupo {
+    /* background-color: #2a2d34; gunmetal*/
+    border: 1px solid rgb(32, 32, 32);
+    padding: 2em;
+    color: #2a2d34;
+    text-align: left;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .contenedor-crear-grupo {
+    border: 1px solid rgb(32, 32, 32);
+    padding: 2em;
+    color: #2a2d34;
+    text-align: left;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .titulo-form {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    margin-left: 1.3rem;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+  }
+  
+  .contenedor-crear-grupo input::placeholder,
+  .contenedor-crear-grupo select::placeholder {
+    color: #2a2d34;
+  }
+  .contenedor-crear-grupo label {
+    font-size: 1.1rem;
+  }
+  
+  .contenedor-crear-grupo div {
+    padding: 0 2em 0 2em;
+  }
+  
+  .contenedor-crear-grupo input,
+  .contenedor-crear-grupo textarea,
+  .contenedor-crear-grupo select {
+    background-color: #00000000;
+    border-radius: 0%;
+    border: none;
+    border-bottom: 1px solid #2a2d34;
+    outline: none;
+    color: #2a2d34;
+  }
+
+  /* .boton-guardar {
+    background-color: #6bf8ff;
+    border: 1px solid black;
+  }
+
+  .boton-guardar:hover {
+    background-color: #00696e;
+    border: 1px solid black;
+    color: #fff;
+  } */

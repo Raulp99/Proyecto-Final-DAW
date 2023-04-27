@@ -1,17 +1,20 @@
-import { createRouter, createWebHashHistory } from "vue-router";
-import SeleccionJuego from "../views/seleccion-juego.vue";
-import LeagueOfLegends from "../views/league-of-legends.vue";
-import CounterStrike from "../views/counter-strike.vue";
-import Valorant from "../views/valorant.vue";
-import ApexLegends from "../views/apex-legends.vue";
-import Dota from "../views/dota.vue";
-import Overwatch from "../views/overwatch.vue";
-import RainbowSix from "../views/rainbow-six.vue";
-import Fortnite from "../views/fortnite.vue";
+import { createRouter, createWebHistory } from "vue-router";
+import SeleccionJuego from "@/views/seleccion-juego.vue";
+import LeagueOfLegends from "@/views/league-of-legends.vue";
+import CounterStrike from "@/views/counter-strike.vue";
+import Valorant from "@/views/valorant.vue";
+import ApexLegends from "@/views/apex-legends.vue";
+import Dota from "@/views/dota.vue";
+import Overwatch from "@/views/overwatch.vue";
+import RainbowSix from "@/views/rainbow-six.vue";
+import Fortnite from "@/views/fortnite.vue";
+import FormInicioSesion from "@/views/formulario-inicio-sesion.vue";
+import FormRegistro from "@/views/formulario-registro.vue";
 
 const routes = [
+  // Vista de inicio
   {
-    path: "/",
+    path: "/nexo",
     name: "SeleccionJuego",
     component: SeleccionJuego,
     meta: {
@@ -19,7 +22,7 @@ const routes = [
     }
   },
   {
-    path: "/league-of-legends",
+    path: "/nexo/league-of-legends",
     name: "LeagueOfLegends",
     component: LeagueOfLegends,
     meta: {
@@ -27,7 +30,7 @@ const routes = [
     }
   },
   {
-    path: "/counter-strike",
+    path: "/nexo/counter-strike",
     name: "CounterStrike",
     component: CounterStrike,
     meta: {
@@ -35,7 +38,7 @@ const routes = [
     }
   },
   {
-    path: "/valorant",
+    path: "/nexo/valorant",
     name: "Valorant",
     component: Valorant,
     meta: {
@@ -43,7 +46,7 @@ const routes = [
     }
   },
   {
-    path: "/apex-legends",
+    path: "/nexo/apex-legends",
     name: "ApexLegends",
     component: ApexLegends,
     meta: {
@@ -51,7 +54,7 @@ const routes = [
     }
   },
   {
-    path: "/dota",
+    path: "/nexo/dota2",
     name: "Dota",
     component: Dota,
     meta: {
@@ -59,7 +62,7 @@ const routes = [
     }
   },
   {
-    path: "/overwatch",
+    path: "/nexo/overwatch2",
     name: "Overwatch",
     component: Overwatch ,
     meta: {
@@ -67,7 +70,7 @@ const routes = [
     }
   },
   {
-    path: "/rainbow-six",
+    path: "/nexo/rainbow-six-siege",
     name: "RainbowSix",
     component: RainbowSix,
     meta: {
@@ -75,18 +78,38 @@ const routes = [
     }
   },
   {
-    path: "/fortnite",
+    path: "/nexo/fortnite",
     name: "Fortnite",
     component: Fortnite,
     meta: {
       title: 'Fortnite'
     }
-  }
+  },
+  {
+    path: "/nexo/formulario-inicio-sesion",
+    name: "FormInicioSesion",
+    component: FormInicioSesion,
+    meta: {
+      title: 'FormInicioSesion'
+    }
+  },
+  {
+    path: "/nexo/formulario-registro",
+    name: "FormRegistro",
+    component: FormRegistro,
+    meta: {
+      title: 'FormRegistro'
+    }
+  },
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
-  routes
+  history: createWebHistory(),
+  routes,
+  // Desplaza al inicio de la página al cambiar de vista
+  scrollBehavior() {
+    document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
+}
 });
 
 // Cambiar tittle de la página

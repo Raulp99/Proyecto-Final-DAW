@@ -3,19 +3,26 @@
     <!-- Contenido superior -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark barra-navegacion">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"><h1>NEXO</h1></a>
+        <router-link to="/nexo" class="navbar-brand">
+          <h1 class="logo">NEXO</h1>
+        </router-link>
         <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="#">Iniciar sesión</a>
-          <a class="nav-link" href="#">Registrarse</a>
+          <router-link class="nav-link" to="/nexo/formulario-inicio-sesion"
+            >Iniciar sesión</router-link
+          >
+          <router-link class="nav-link" to="/nexo/formulario-registro"
+            >Registrarse</router-link
+          >
         </div>
       </div>
     </nav>
-    
     <!-- Contenido principal -->
-    <router-view></router-view>
+    <main>
+      <router-view></router-view>
+    </main>
 
     <!-- Contenido inferior -->
-    <footer class="bg-dark text-white py-4">
+    <footer class="bg-dark text-white py-4 footer">
       <div class="container">
         <div class="row">
           <div class="col-md-1">Nexo 2023</div>
@@ -55,7 +62,7 @@
     </footer>
   </div>
 </template>
-
+<script></script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -71,6 +78,19 @@
   background: #24222e;
   padding: 20px;
   color: #fff;
+}
+
+.logo {
+  transition: 0.3s;
+}
+
+.logo:hover {
+  color: #636363;
+  transform: translate(0, -3px);
+}
+
+main {
+  min-height: 70vh;
 }
 
 footer {

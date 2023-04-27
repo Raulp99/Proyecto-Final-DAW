@@ -10,10 +10,14 @@
         </h2>
       </div>
     </header>
+
     <div class="container">
       <div class="row">
         <!-- Juego 1 -->
-        <router-link to="/league-of-legends" class="col-xl-3 col-md-6 mb-4 juego">
+        <router-link
+          to="/nexo/league-of-legends"
+          class="col-xl-3 col-md-6 mb-4 juego"
+        >
           <div class="card border-0 shadow lol h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">League of legends</p>
@@ -21,7 +25,7 @@
           </div>
         </router-link>
         <!-- Juego 2 -->
-        <router-link to="/counter-strike" class="col-xl-3 col-md-6 mb-4 juego">
+        <router-link to="/nexo/counter-strike" class="col-xl-3 col-md-6 mb-4 juego">
           <div class="card border-0 shadow csgo h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">
@@ -31,7 +35,7 @@
           </div>
         </router-link>
         <!-- Juego 3 -->
-        <router-link to="/valorant" class="col-xl-3 col-md-6 mb-4 juego">
+        <router-link to="/nexo/valorant" class="col-xl-3 col-md-6 mb-4 juego">
           <div class="card border-0 shadow valorant h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">Valorant</p>
@@ -39,7 +43,7 @@
           </div>
         </router-link>
         <!-- Juego 4 -->
-        <router-link to="/apex-legends" class="col-xl-3 col-md-6 mb-4 juego">
+        <router-link to="/nexo/apex-legends" class="col-xl-3 col-md-6 mb-4 juego">
           <div class="card border-0 shadow apex h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">Apex legends</p>
@@ -47,7 +51,7 @@
           </div>
         </router-link>
         <!-- Juego 5 -->
-        <router-link to="/dota" class="col-xl-3 col-md-6 mb-4 juego">
+        <router-link to="/nexo/dota2" class="col-xl-3 col-md-6 mb-4 juego">
           <div class="card border-0 shadow dota2 h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">DOTA 2</p>
@@ -55,7 +59,7 @@
           </div>
         </router-link>
         <!-- Juego 6 -->
-        <router-link to="/overwatch" class="col-xl-3 col-md-6 mb-4 juego">
+        <router-link to="/nexo/overwatch2" class="col-xl-3 col-md-6 mb-4 juego">
           <div class="card border-0 shadow overwatch2 h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">Overwatch 2</p>
@@ -63,7 +67,7 @@
           </div>
         </router-link>
         <!-- Juego 7 -->
-        <router-link to="/rainbow-six" class="col-xl-3 col-md-6 mb-4 juego">
+        <router-link to="/nexo/rainbow-six-siege" class="col-xl-3 col-md-6 mb-4 juego">
           <div class="card border-0 shadow rainbow6 h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">
@@ -73,7 +77,7 @@
           </div>
         </router-link>
         <!-- Juego 8 -->
-        <router-link to="/fortnite" class="col-xl-3 col-md-6 mb-4 juego">
+        <router-link to="/nexo/fortnite" class="col-xl-3 col-md-6 mb-4 juego">
           <div class="card border-0 shadow fortnite h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">Fortnite</p>
@@ -83,7 +87,6 @@
       </div>
       <!-- /.row -->
     </div>
-   
   </div>
 </template>
 <!-- eslint-disable-next-line vue/multi-word-component-names -->
@@ -95,11 +98,10 @@ export default {
 </script>
 
 <style>
-
 .contenedor-header {
   position: relative;
   height: 70vh;
-  background-image: url(@/assets/imagen-cabecera-inicio.avif);
+  background-image: url(@/assets/img/imagen-cabecera-inicio.avif);
   background-position: center;
   background-size: cover;
 }
@@ -110,7 +112,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(2px);
 }
 
@@ -177,57 +179,56 @@ footer {
 }
 
 .csgo {
-  background-image: url(@/assets/fondo-counter-strike.jpg);
+  background-image: url(@/assets/img/counter-strike/fondo-counter-strike.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .lol {
-  background-image: url(@/assets/lol-card-image.png);
+  background-image: url(@/assets/img/league-of-legends/lol-card-image.png);
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .valorant {
-  background-image: url(@/assets/fondo-valorant.jpg);
+  background-image: url(@/assets/img/valorant/fondo-valorant.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .apex {
-  background-image: url(@/assets/fondo-apex-legends.jpg);
+  background-image: url(@/assets/img/apex-legends/fondo-apex-legends.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .dota2 {
-  background-image: url(@/assets/fondo-dota2.jpg);
+  background-image: url(@/assets/img/dota2/fondo-dota2.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .fortnite {
-  background-image: url(@/assets/fondo-fortnite.jpg);
+  background-image: url(@/assets/img/fortnite/fondo-fortnite.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .overwatch2 {
-  background-image: url(@/assets/fondo-overwatch2.png);
+  background-image: url(@/assets/img/overwatch/fondo-overwatch2.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .rainbow6 {
-  background-image: url(@/assets/fondo-rainbow6.png);
+  background-image: url(@/assets/img/rainbow-six/fondo-rainbow6.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
-
 </style>
