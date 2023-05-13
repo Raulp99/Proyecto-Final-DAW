@@ -592,6 +592,7 @@ export default {
   methods: {
     async guardarGrupo() {
       this.fechaCreacion = new Date().toISOString();
+      this.grupoActivo = 1;
       try {
         const response = await axios.post(this.gruposLeagueOfLegends, {
           tituloGrupo: this.tituloGrupo,
@@ -604,6 +605,7 @@ export default {
           fechaCreacion: this.fechaCreacion,
           discordLiderGrupo: this.discordLiderGrupo,
           nombreLiderGrupo: this.nombreLiderGrupo,
+          grupoActivo: this.grupoActivo,
         });
         console.log(response);
         this.tituloGrupo = "";
@@ -690,9 +692,13 @@ export default {
     comprobarJugador(jugador) {
       return jugador != null && jugador != "" ? true : false;
     },
-    
+
     formatoFechaGrupo(fecha) {
-      return fecha[2] + "/" + fecha[1] + "/" + fecha[0];
+      const fechaFormat = new Date(fecha);
+      const dia = fechaFormat.getDate();
+      const mes = fechaFormat.getMonth() + 1;
+      const anio = fechaFormat.getFullYear();
+      return `${dia}-${mes}-${anio}`;
     },
   },
   mounted() {

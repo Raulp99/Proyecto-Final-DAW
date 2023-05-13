@@ -5,7 +5,7 @@ import LeagueOfLegends from "@/views/league-of-legends.vue";
 import CounterStrike from "@/views/counter-strike.vue";
 import Valorant from "@/views/valorant.vue";
 import ApexLegends from "@/views/apex-legends.vue";
-import Dota from "@/views/dota.vue";
+import Dota2 from "@/views/dota2.vue";
 import Overwatch from "@/views/overwatch.vue";
 import RainbowSix from "@/views/rainbow-six.vue";
 import Fortnite from "@/views/fortnite.vue";
@@ -56,10 +56,10 @@ const routes = [
   },
   {
     path: "/dota2",
-    name: "Dota",
-    component: Dota,
+    name: "Dota2",
+    component: Dota2,
     meta: {
-      title: "Dota 2",
+      title: "Dota2 2",
     },
   },
   {

@@ -41,6 +41,10 @@
               <span class="campo-grupo">Micrófono requerido:</span>
               {{ post.microfonoRequerido }}
             </p>
+            <p>
+              <span class="campo-grupo">Fecha de creación:</span>
+              {{ formatoFechaGrupo(post.fechaCreacion) }}
+            </p>
             <p class="campo-grupo">Descripción</p>
             <div class="descripcion-grupo">
               <p>{{ post.descripcion }}</p>
@@ -57,7 +61,7 @@
                     src="@/assets/img/rainbow-six/rainbow6-icon.png"
                     alt=""
                     class="icono"
-                    title="Valorant"
+                    title="Tom Clancy's Rainbow Six Siege"
                   />
                   {{ post.liderGrupo }}
                 </div>
@@ -81,7 +85,7 @@
                       src="@/assets/img/rainbow-six/rainbow6-icon.png"
                       alt=""
                       class="icono"
-                      title="Valorant"
+                      title="Tom Clancy's Rainbow Six Siege"
                     />{{ post.jugador1 }}
                   </div>
                   <div>
@@ -95,7 +99,22 @@
                   </div>
                 </div>
                 <div v-if="!comprobarJugador(post.jugador1)">
-                  <form method="post" v-on:submit.prevent="modificarGrupo()">
+                  <form
+                    method="post"
+                    v-on:submit.prevent="
+                      modificarGrupo(
+                        post.idGrupo,
+                        post.jugador1,
+                        post.jugador2,
+                        post.jugador3,
+                        post.jugador4,
+                        post.discordJugador1,
+                        post.discordJugador2,
+                        post.discordJugador3,
+                        post.discordJugador4
+                      )
+                    "
+                  >
                     <label class="miembro">Jugador 1</label>
                     <input
                       type="text"
@@ -127,7 +146,7 @@
                       src="@/assets/img/rainbow-six/rainbow6-icon.png"
                       alt=""
                       class="icono"
-                      title="Valorant"
+                      title="Tom Clancy's Rainbow Six Siege"
                     />{{ post.jugador2 }}
                   </div>
                   <div>
@@ -141,13 +160,42 @@
                   </div>
                 </div>
                 <div v-if="!comprobarJugador(post.jugador2)">
-                  <label class="miembro">Jugador 2</label>
-                  <input type="text" placeholder="Jugador 2" class="" />
-                  <input
-                    type="text"
-                    placeholder="discord + #"
-                    class=""
-                  /><button>Unirse</button>
+                  <form
+                    method="post"
+                    v-on:submit.prevent="
+                      modificarGrupo(
+                        post.idGrupo,
+                        post.jugador1,
+                        post.jugador2,
+                        post.jugador3,
+                        post.jugador4,
+                        post.discordJugador1,
+                        post.discordJugador2,
+                        post.discordJugador3,
+                        post.discordJugador4
+                      )
+                    "
+                  >
+                    <label class="miembro">Jugador 2</label>
+                    <input
+                      type="text"
+                      id="jugador2"
+                      name="jugador2"
+                      minlength="3"
+                      maxlength="16"
+                      placeholder="Jugador 2"
+                      v-model="jugador2"
+                      required
+                    />
+                    <input
+                      type="text"
+                      placeholder="discord + #"
+                      id="discordJugador2"
+                      name="discordJugador2"
+                      v-model="discordJugador2"
+                    />
+                    <button type="submit">Unirse</button>
+                  </form>
                 </div>
               </div>
 
@@ -159,7 +207,7 @@
                       src="@/assets/img/rainbow-six/rainbow6-icon.png"
                       alt=""
                       class="icono"
-                      title="Valorant"
+                      title="Tom Clancy's Rainbow Six Siege"
                     />{{ post.jugador3 }}
                   </div>
                   <div>
@@ -174,13 +222,42 @@
                 </div>
 
                 <div v-if="!comprobarJugador(post.jugador3)">
-                  <label class="miembro">Jugador 3</label>
-                  <input type="text" placeholder="Jugador 3" class="" />
-                  <input
-                    type="text"
-                    placeholder="discord + #"
-                    class=""
-                  /><button>Unirse</button>
+                  <form
+                    method="post"
+                    v-on:submit.prevent="
+                      modificarGrupo(
+                        post.idGrupo,
+                        post.jugador1,
+                        post.jugador2,
+                        post.jugador3,
+                        post.jugador4,
+                        post.discordJugador1,
+                        post.discordJugador2,
+                        post.discordJugador3,
+                        post.discordJugador4
+                      )
+                    "
+                  >
+                    <label class="miembro">Jugador 3</label>
+                    <input
+                      type="text"
+                      id="jugador3"
+                      name="jugador3"
+                      minlength="3"
+                      maxlength="16"
+                      placeholder="Jugador 3"
+                      v-model="jugador3"
+                      required
+                    />
+                    <input
+                      type="text"
+                      placeholder="discord + #"
+                      id="discordJugador3"
+                      name="discordJugador3"
+                      v-model="discordJugador3"
+                    />
+                    <button type="submit">Unirse</button>
+                  </form>
                 </div>
               </div>
 
@@ -192,7 +269,7 @@
                       src="@/assets/img/rainbow-six/rainbow6-icon.png"
                       alt=""
                       class="icono"
-                      title="Valorant"
+                      title="Tom Clancy's Rainbow Six Siege"
                     />{{ post.jugador4 }}
                   </div>
                   <div>
@@ -206,14 +283,42 @@
                   </div>
                 </div>
                 <div v-if="!comprobarJugador(post.jugador4)">
-                  <label class="miembro">Jugador 4</label>
-                  <input type="text" placeholder="Jugador 4" class="" />
-
-                  <input
-                    type="text"
-                    placeholder="discord + #"
-                    class=""
-                  /><button>Unirse</button>
+                  <form
+                    method="post"
+                    v-on:submit.prevent="
+                      modificarGrupo(
+                        post.idGrupo,
+                        post.jugador1,
+                        post.jugador2,
+                        post.jugador3,
+                        post.jugador4,
+                        post.discordJugador1,
+                        post.discordJugador2,
+                        post.discordJugador3,
+                        post.discordJugador4
+                      )
+                    "
+                  >
+                    <label class="miembro">Jugador 4</label>
+                    <input
+                      type="text"
+                      id="jugador4"
+                      name="jugador4"
+                      minlength="3"
+                      maxlength="16"
+                      placeholder="Jugador 4"
+                      v-model="jugador4"
+                      required
+                    />
+                    <input
+                      type="text"
+                      placeholder="discord + #"
+                      id="discordJugador4"
+                      name="discordJugador4"
+                      v-model="discordJugador4"
+                    />
+                    <button type="submit">Unirse</button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -233,7 +338,9 @@
             <fieldset>
               <legend>Líder de grupo</legend>
               <div class="form-group mb-3">
-                <label for="nombre">Nombre de usuario en Rainbow Six Siege</label>
+                <label for="nombre"
+                  >Nombre de usuario en Rainbow Six Siege</label
+                >
                 <input
                   type="text"
                   class="form-control"
@@ -462,6 +569,7 @@ export default {
   methods: {
     async guardarGrupo() {
       this.fechaCreacion = new Date().toISOString();
+      this.grupoActivo = 1;
       try {
         const response = await axios.post(this.gruposRainbow6, {
           tituloGrupo: this.tituloGrupo,
@@ -475,6 +583,7 @@ export default {
           fechaCreacion: this.fechaCreacion,
           discordLiderGrupo: this.discordLiderGrupo,
           nombreEnJuegoLiderGrupo: this.nombreEnJuegoLiderGrupo,
+          grupoActivo: this.grupoActivo,
         });
         console.log(response);
         this.tituloGrupo = "";
@@ -484,7 +593,7 @@ export default {
         this.rangoCompetitivo = "";
         this.numeroJugadores = "1";
         this.region = "";
-        this.microfonoRequerido = "Si";
+        this.microfonoRequerido = "Sí";
         this.descripcion = "";
         this.liderGrupo = "";
         this.fechaCreacion = "";
@@ -495,7 +604,38 @@ export default {
       }
     },
 
-    async modificarGrupo() {
+    async modificarGrupo(id, j1, j2, j3, j4, d1, d2, d3, d4) {
+      this.idgrupo = id;
+
+      const jugadores = {
+        jugador1: j1,
+        jugador2: j2,
+        jugador3: j3,
+        jugador4: j4,
+      };
+
+      const discordJugadores = {
+        discordJugador1: d1,
+        discordJugador2: d2,
+        discordJugador3: d3,
+        discordJugador4: d4,
+      };
+
+      for (const jugador in jugadores) {
+        if (jugadores[jugador] != null && jugadores[jugador] != "") {
+          this[jugador] = jugadores[jugador];
+        }
+      }
+
+      for (const discordJugador in discordJugadores) {
+        if (
+          discordJugadores[discordJugador] != null &&
+          discordJugadores[discordJugador] != ""
+        ) {
+          this[discordJugador] = discordJugadores[discordJugador];
+        }
+      }
+
       try {
         const response = await axios.put(
           this.gruposRainbow6 + "/" + this.idgrupo,
@@ -527,7 +667,13 @@ export default {
           this.errors.push(e);
         });
     },
-
+    formatoFechaGrupo(fecha) {
+      const fechaFormat = new Date(fecha);
+      const dia = fechaFormat.getDate();
+      const mes = fechaFormat.getMonth() + 1;
+      const anio = fechaFormat.getFullYear();
+      return `${dia}-${mes}-${anio}`;
+    },
     comprobarJugador(jugador) {
       return jugador != null && jugador != "" ? true : false;
     },

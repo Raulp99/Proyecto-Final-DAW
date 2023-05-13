@@ -42,6 +42,10 @@
               <span class="campo-grupo">Micrófono requerido:</span>
               {{ post.microfonoRequerido }}
             </p>
+            <p>
+              <span class="campo-grupo">Fecha de creación:</span>
+              {{ formatoFechaGrupo(post.fechaCreacion) }}
+            </p>
             <p class="campo-grupo">Descripción</p>
             <div class="descripcion-grupo">
               <p>{{ post.descripcion }}</p>
@@ -82,7 +86,7 @@
                       src="@/assets/img/apex-legends/apex-icon.png"
                       alt=""
                       class="icono"
-                      title="Apex legends"
+                      title="League of legends"
                     />{{ post.jugador1 }}
                   </div>
                   <div>
@@ -96,7 +100,18 @@
                   </div>
                 </div>
                 <div v-if="!comprobarJugador(post.jugador1)">
-                  <form method="post" v-on:submit.prevent="modificarGrupo()">
+                  <form
+                    method="post"
+                    v-on:submit.prevent="
+                      modificarGrupo(
+                        post.idGrupo,
+                        post.jugador1,
+                        post.jugador2,
+                        post.discordJugador1,
+                        post.discordJugador2
+                      )
+                    "
+                  >
                     <label class="miembro">Jugador 1</label>
                     <input
                       type="text"
@@ -128,7 +143,7 @@
                       src="@/assets/img/apex-legends/apex-icon.png"
                       alt=""
                       class="icono"
-                      title="Apex legends"
+                      title="League of legends"
                     />{{ post.jugador2 }}
                   </div>
                   <div>
@@ -142,13 +157,38 @@
                   </div>
                 </div>
                 <div v-if="!comprobarJugador(post.jugador2)">
-                  <label class="miembro">Jugador 2</label>
-                  <input type="text" placeholder="Jugador 2" class="" />
-                  <input
-                    type="text"
-                    placeholder="discord + #"
-                    class=""
-                  /><button>Unirse</button>
+                  <form
+                    method="post"
+                    v-on:submit.prevent="
+                      modificarGrupo(
+                        post.idGrupo,
+                        post.jugador1,
+                        post.jugador2,
+                        post.discordJugador1,
+                        post.discordJugador2
+                      )
+                    "
+                  >
+                    <label class="miembro">Jugador 2</label>
+                    <input
+                      type="text"
+                      id="jugador2"
+                      name="jugador2"
+                      minlength="3"
+                      maxlength="16"
+                      placeholder="Jugador 2"
+                      v-model="jugador2"
+                      required
+                    />
+                    <input
+                      type="text"
+                      placeholder="discord + #"
+                      id="discordJugador2"
+                      name="discordJugador2"
+                      v-model="discordJugador2"
+                    />
+                    <button type="submit">Unirse</button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -394,6 +434,7 @@ export default {
   methods: {
     async guardarGrupo() {
       this.fechaCreacion = new Date().toISOString();
+      this.grupoActivo = 1;
       try {
         const response = await axios.post(this.gruposApex, {
           tituloGrupo: this.tituloGrupo,
@@ -427,19 +468,17 @@ export default {
       }
     },
 
-    async modificarGrupo(id, j1, j2,  d1, d2,) {
+    async modificarGrupo(id, j1, j2, d1, d2) {
       this.idgrupo = id;
 
       const jugadores = {
         jugador1: j1,
         jugador2: j2,
-
       };
 
       const discordJugadores = {
         discordJugador1: d1,
         discordJugador2: d2,
-
       };
 
       for (const jugador in jugadores) {
@@ -458,17 +497,13 @@ export default {
       }
 
       try {
-        const response = await axios.put(
-          this.gruposLeagueOfLegends + "/" + this.idgrupo,
-          {
-            jugador1: this.jugador1,
-            jugador2: this.jugador2,
+        const response = await axios.put(this.gruposApex + "/" + this.idgrupo, {
+          jugador1: this.jugador1,
+          jugador2: this.jugador2,
 
-            discordJugador1: this.discordJugador1,
-            discordJugador2: this.discordJugador2,
-
-          }
-        );
+          discordJugador1: this.discordJugador1,
+          discordJugador2: this.discordJugador2,
+        });
         console.log(response);
         this.listarGrupos(); // Actualiza la lista de grupos
       } catch (error) {
@@ -489,6 +524,14 @@ export default {
 
     comprobarJugador(jugador) {
       return jugador != null && jugador != "" ? true : false;
+    },
+
+    formatoFechaGrupo(fecha) {
+      const fechaFormat = new Date(fecha);
+      const dia = fechaFormat.getDate();
+      const mes = fechaFormat.getMonth() + 1;
+      const anio = fechaFormat.getFullYear();
+      return `${dia}-${mes}-${anio}`;
     },
   },
   mounted() {
