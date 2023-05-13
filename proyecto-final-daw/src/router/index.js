@@ -1,4 +1,5 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
+
 import SeleccionJuego from "@/views/seleccion-juego.vue";
 import LeagueOfLegends from "@/views/league-of-legends.vue";
 import CounterStrike from "@/views/counter-strike.vue";
@@ -14,102 +15,102 @@ import FormRegistro from "@/views/formulario-registro.vue";
 const routes = [
   // Vista de inicio
   {
-    path: "/nexo",
+    path: "/",
     name: "SeleccionJuego",
     component: SeleccionJuego,
     meta: {
-      title: 'NEXO'
-    }
+      title: "NEXO",
+    },
   },
   {
-    path: "/nexo/league-of-legends",
+    path: "/league-of-legends",
     name: "LeagueOfLegends",
     component: LeagueOfLegends,
     meta: {
-      title: 'League of Legends'
-    }
+      title: "League of Legends",
+    },
   },
   {
-    path: "/nexo/counter-strike",
+    path: "/counter-strike",
     name: "CounterStrike",
     component: CounterStrike,
     meta: {
-      title: 'Counter Strike Global Offensive'
-    }
+      title: "Counter Strike Global Offensive",
+    },
   },
   {
-    path: "/nexo/valorant",
+    path: "/valorant",
     name: "Valorant",
     component: Valorant,
     meta: {
-      title: 'Valorant'
-    }
+      title: "Valorant",
+    },
   },
   {
-    path: "/nexo/apex-legends",
+    path: "/apex-legends",
     name: "ApexLegends",
     component: ApexLegends,
     meta: {
-      title: 'Apex Legends'
-    }
+      title: "Apex Legends",
+    },
   },
   {
-    path: "/nexo/dota2",
+    path: "/dota2",
     name: "Dota",
     component: Dota,
     meta: {
-      title: 'Dota 2'
-    }
+      title: "Dota 2",
+    },
   },
   {
-    path: "/nexo/overwatch2",
+    path: "/overwatch2",
     name: "Overwatch",
-    component: Overwatch ,
+    component: Overwatch,
     meta: {
-      title: 'Overwatch 2'
-    }
+      title: "Overwatch 2",
+    },
   },
   {
-    path: "/nexo/rainbow-six-siege",
+    path: "/rainbow-six-siege",
     name: "RainbowSix",
     component: RainbowSix,
     meta: {
-      title: 'RainbowSix'
-    }
+      title: "RainbowSix",
+    },
   },
   {
-    path: "/nexo/fortnite",
+    path: "/fortnite",
     name: "Fortnite",
     component: Fortnite,
     meta: {
-      title: 'Fortnite'
-    }
+      title: "Fortnite",
+    },
   },
   {
-    path: "/nexo/formulario-inicio-sesion",
+    path: "/formulario-inicio-sesion",
     name: "FormInicioSesion",
     component: FormInicioSesion,
     meta: {
-      title: 'FormInicioSesion'
-    }
+      title: "NEXO Iniciar sesión",
+    },
   },
   {
-    path: "/nexo/formulario-registro",
+    path: "/formulario-registro",
     name: "FormRegistro",
     component: FormRegistro,
     meta: {
-      title: 'FormRegistro'
-    }
+      title: "NEXO Registro",
+    },
   },
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
   // Desplaza al inicio de la página al cambiar de vista
   scrollBehavior() {
-    document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
-}
+    document.getElementById("app").scrollIntoView({ behavior: "smooth" });
+  },
 });
 
 // Cambiar tittle de la página

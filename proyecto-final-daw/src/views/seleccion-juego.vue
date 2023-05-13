@@ -5,8 +5,8 @@
       <div class="texto-header">
         <h1>Encuentra jugadores con NEXO</h1>
         <h2 class="">
-          Encuentra fácilmente a los jugadores que necesitas, conoce gente nueva
-          y mejora los resultados de tus partidas.
+          Encuentra fácilmente a los jugadores que necesitas, conoce otras
+          personas y mejora los resultados de tus partidas.
         </h2>
       </div>
     </header>
@@ -15,7 +15,7 @@
       <div class="row">
         <!-- Juego 1 -->
         <router-link
-          to="/nexo/league-of-legends"
+          to="/league-of-legends"
           class="col-xl-3 col-md-6 mb-4 juego"
         >
           <div class="card border-0 shadow lol h-100">
@@ -25,7 +25,10 @@
           </div>
         </router-link>
         <!-- Juego 2 -->
-        <router-link to="/nexo/counter-strike" class="col-xl-3 col-md-6 mb-4 juego">
+        <router-link
+          to="/counter-strike"
+          class="col-xl-3 col-md-6 mb-4 juego"
+        >
           <div class="card border-0 shadow csgo h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">
@@ -35,7 +38,7 @@
           </div>
         </router-link>
         <!-- Juego 3 -->
-        <router-link to="/nexo/valorant" class="col-xl-3 col-md-6 mb-4 juego">
+        <router-link to="/valorant" class="col-xl-3 col-md-6 mb-4 juego">
           <div class="card border-0 shadow valorant h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">Valorant</p>
@@ -43,7 +46,10 @@
           </div>
         </router-link>
         <!-- Juego 4 -->
-        <router-link to="/nexo/apex-legends" class="col-xl-3 col-md-6 mb-4 juego">
+        <router-link
+          to="/apex-legends"
+          class="col-xl-3 col-md-6 mb-4 juego"
+        >
           <div class="card border-0 shadow apex h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">Apex legends</p>
@@ -51,7 +57,7 @@
           </div>
         </router-link>
         <!-- Juego 5 -->
-        <router-link to="/nexo/dota2" class="col-xl-3 col-md-6 mb-4 juego">
+        <router-link to="/dota2" class="col-xl-3 col-md-6 mb-4 juego">
           <div class="card border-0 shadow dota2 h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">DOTA 2</p>
@@ -59,7 +65,7 @@
           </div>
         </router-link>
         <!-- Juego 6 -->
-        <router-link to="/nexo/overwatch2" class="col-xl-3 col-md-6 mb-4 juego">
+        <router-link to="/overwatch2" class="col-xl-3 col-md-6 mb-4 juego">
           <div class="card border-0 shadow overwatch2 h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">Overwatch 2</p>
@@ -67,7 +73,10 @@
           </div>
         </router-link>
         <!-- Juego 7 -->
-        <router-link to="/nexo/rainbow-six-siege" class="col-xl-3 col-md-6 mb-4 juego">
+        <router-link
+          to="/rainbow-six-siege"
+          class="col-xl-3 col-md-6 mb-4 juego"
+        >
           <div class="card border-0 shadow rainbow6 h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">
@@ -77,7 +86,7 @@
           </div>
         </router-link>
         <!-- Juego 8 -->
-        <router-link to="/nexo/fortnite" class="col-xl-3 col-md-6 mb-4 juego">
+        <router-link to="/fortnite" class="col-xl-3 col-md-6 mb-4 juego">
           <div class="card border-0 shadow fortnite h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">Fortnite</p>
@@ -91,7 +100,6 @@
 </template>
 <!-- eslint-disable-next-line vue/multi-word-component-names -->
 <script>
-
 export default {
   name: "SeleccionJuego",
 };
@@ -101,7 +109,7 @@ export default {
 .contenedor-header {
   position: relative;
   height: 70vh;
-  background-image: url(@/assets/img/imagen-cabecera-inicio.avif);
+  background-image: url(@/assets/img/imagen-cabecera-inicio.png);
   background-position: center;
   background-size: cover;
 }
@@ -113,25 +121,23 @@ export default {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(8px);
 }
 
 .texto-header {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-90%, -60%);
   text-align: left;
   color: #fff;
+  margin-left: 5%;
+  margin-right: 5%;
 }
-
 .texto-header h1 {
-  font-size: 6rem;
+  font-size: 4rem;
   margin-bottom: 1rem;
 }
 
 .texto-header h2 {
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
 .header-titulo {
@@ -146,13 +152,6 @@ export default {
 .header-titulo a:hover {
   text-decoration: none;
   color: #527cd6cb;
-}
-
-footer {
-  background: #636363;
-  padding: 20px;
-  color: #fff;
-  margin-top: 130px;
 }
 
 .juego {
@@ -230,5 +229,29 @@ footer {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+@media only screen and (min-width: 992px) {
+  .texto-header h1 {
+    font-size: 6rem;
+  }
+
+  .texto-header h2 {
+    width: 70%;
+    font-size: 2rem;
+  }
+
+  .texto-header {
+    margin: 4%;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .texto-header {
+    margin-left: 16%;
+    max-width: 50%;
+    margin-top: 2%;
+
+  }
 }
 </style>

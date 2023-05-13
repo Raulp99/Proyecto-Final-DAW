@@ -3,237 +3,477 @@
     <header class="contenedor-header-counter-strike mb-4">
       <div class="filtro-header"></div>
       <div class="texto-header">
-        <h1>Counter strike global Offensive</h1>
+        <h1>Counter Strike Global Offensive</h1>
       </div>
     </header>
     <div class="container-fluid">
       <div class="row">
         <!-- Contenido Principal -->
         <div
-          class="order-1 order-lg-0 col-12 col-lg-7 mx-auto contenedor-buscar-grupo shadow"
+          class="order-1 order-lg-0 col-11 col-lg-7 mt-4 mt-lg-0 mx-auto shadow contenedor-buscar-grupo container-fluid"
         >
           <!-- contenedor-crear-grupo buscar grupos -->
-          <h1>Explorar grupos</h1>
+          <h1 class="titulo-form col-12">Explorar grupos</h1>
+          <div
+            class="grupo p-3 my-3"
+            v-for="post in postsGrupos"
+            :key="post.idgrupo"
+          >
+            <h4 class="titulo-grupo">{{ post.tituloGrupo }}</h4>
+
+            <p>
+              <span class="campo-grupo">Modo de juego:</span>
+              {{ post.modoJuego }}
+            </p>
+            <p
+              v-if="
+                post.rangoCompetitivo != null && post.rangoCompetitivo != ''
+              "
+            >
+              <span class="campo-grupo">Rango competitivo:</span>
+              {{ post.rangoCompetitivo }}
+            </p>
+            <p>
+              <span class="campo-grupo">Región del servidor:</span>
+              {{ post.region }}
+            </p>
+            <p>
+              <span class="campo-grupo">Micrófono requerido:</span>
+              {{ post.microfonoRequerido }}
+            </p>
+            <p class="campo-grupo">Descripción</p>
+            <div class="descripcion-grupo">
+              <p>{{ post.descripcion }}</p>
+            </div>
+
+            <div class="border p-2 contenedor-miembros">
+              <h5 class="campo-grupo">Jugadores</h5>
+
+              <div class="contenedor-miembro">
+                <div class="miembro lider-grupo">Líder de grupo</div>
+
+                <div class="nombre-jugador">
+                  <img
+                    src="@/assets/img/counter-strike/counter-strike-icon.png"
+                    alt=""
+                    class="icono"
+                    title="Counter Strike Global Offensive"
+                  />
+                  {{ post.liderGrupo }}
+                </div>
+
+                <div class="nombre-discord">
+                  <img
+                    src="@/assets/img/social-media/discord-icon.svg"
+                    alt="discord"
+                    class="icono"
+                    title="Discord"
+                  />
+                  {{ post.discordLiderGrupo }}
+                </div>
+              </div>
+
+              <div class="contenedor-miembro" v-if="post.numeroJugadores >= 1">
+                <div v-if="comprobarJugador(post.jugador1)">
+                  <div class="miembro">Jugador 1</div>
+                  <div>
+                    <img
+                      src="@/assets/img/counter-strike/counter-strike-icon.png"
+                      alt=""
+                      class="icono"
+                      title="Counter Strike Global Offensive"
+                    />{{ post.jugador1 }}
+                  </div>
+                  <div>
+                    <img
+                      src="@/assets/img/social-media/discord-icon.svg"
+                      alt="discord"
+                      class="icono"
+                      title="Discord"
+                    />
+                    {{ post.discordJugador1 }}
+                  </div>
+                </div>
+                <div v-if="!comprobarJugador(post.jugador1)">
+                  <form method="post" v-on:submit.prevent="modificarGrupo()">
+                    <label class="miembro">Jugador 1</label>
+                    <input
+                      type="text"
+                      id="jugador1"
+                      name="jugador1"
+                      minlength="3"
+                      maxlength="16"
+                      placeholder="Jugador 1"
+                      v-model="jugador1"
+                      required
+                    />
+                    <input
+                      type="text"
+                      placeholder="discord + #"
+                      id="discordJugador1"
+                      name="discordJugador1"
+                      v-model="discordJugador1"
+                    />
+                    <button type="submit">Unirse</button>
+                  </form>
+                </div>
+              </div>
+
+              <div class="contenedor-miembro" v-if="post.numeroJugadores >= 2">
+                <div v-if="comprobarJugador(post.jugador2)">
+                  <div class="miembro">Jugador 2</div>
+                  <div>
+                    <img
+                      src="@/assets/img/counter-strike/counter-strike-icon.png"
+                      alt=""
+                      class="icono"
+                      title="Counter Strike Global Offensive"
+                    />{{ post.jugador2 }}
+                  </div>
+                  <div>
+                    <img
+                      src="@/assets/img/social-media/discord-icon.svg"
+                      alt="discord"
+                      class="icono"
+                      title="Discord"
+                    />
+                    {{ post.discordJugador2 }}
+                  </div>
+                </div>
+                <div v-if="!comprobarJugador(post.jugador2)">
+                  <label class="miembro">Jugador 2</label>
+                  <input type="text" placeholder="Jugador 2" class="" />
+                  <input
+                    type="text"
+                    placeholder="discord + #"
+                    class=""
+                  /><button>Unirse</button>
+                </div>
+              </div>
+
+              <div class="contenedor-miembro" v-if="post.numeroJugadores >= 3">
+                <div v-if="comprobarJugador(post.jugador3)">
+                  <div class="miembro">Jugador 3</div>
+                  <div>
+                    <img
+                      src="@/assets/img/counter-strike/counter-strike-icon.png"
+                      alt=""
+                      class="icono"
+                      title="Counter Strike Global Offensive"
+                    />{{ post.jugador3 }}
+                  </div>
+                  <div>
+                    <img
+                      src="@/assets/img/social-media/discord-icon.svg"
+                      alt="discord"
+                      class="icono"
+                      title="Discord"
+                    />
+                    {{ post.discordJugador3 }}
+                  </div>
+                </div>
+
+                <div v-if="!comprobarJugador(post.jugador3)">
+                  <label class="miembro">Jugador 3</label>
+                  <input type="text" placeholder="Jugador 3" class="" />
+                  <input
+                    type="text"
+                    placeholder="discord + #"
+                    class=""
+                  /><button>Unirse</button>
+                </div>
+              </div>
+
+              <div class="contenedor-miembro" v-if="post.numeroJugadores >= 4">
+                <div v-if="comprobarJugador(post.jugador4)">
+                  <div class="miembro">Jugador 4</div>
+                  <div>
+                    <img
+                      src="@/assets/img/counter-strike/counter-strike-icon.png"
+                      alt=""
+                      class="icono"
+                      title="Counter Strike Global Offensive"
+                    />{{ post.jugador4 }}
+                  </div>
+                  <div>
+                    <img
+                      src="@/assets/img/social-media/discord-icon.svg"
+                      alt="discord"
+                      class="icono"
+                      title="Discord"
+                    />
+                    {{ post.discordJugador4 }}
+                  </div>
+                </div>
+                <div v-if="!comprobarJugador(post.jugador4)">
+                  <label class="miembro">Jugador 4</label>
+                  <input type="text" placeholder="Jugador 4" class="" />
+
+                  <input
+                    type="text"
+                    placeholder="discord + #"
+                    class=""
+                  /><button>Unirse</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- contenedor-crear-grupo crear grupo -->
         <div
-          class="order-0 order-lg-1 col-12 col-lg-4 mx-auto contenedor-crear-grupo shadow"
+          class="order-0 order-lg-1 col-11 col-lg-4 mx-auto contenedor-crear-grupo shadow"
         >
-          <form class="formCrearGrupo">
+          <form
+            class="formCrearGrupo"
+            method="post"
+            v-on:submit.prevent="guardarGrupo()"
+          >
             <h1 class="titulo-form">Crea un grupo nuevo</h1>
-            <div class="form-group mb-3">
-              <label for="nombre">Título del grupo</label>
-              <input
-                type="text"
-                class="form-control"
-                id="tituloGrupo"
-                placeholder=""
-              />
-            </div>
+            <fieldset>
+              <legend>Líder de grupo</legend>
+              <div class="form-group mb-3">
+                <label for="nombre">Nombre de usuario en Counter Strike</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="liderGrupo"
+                  name="liderGrupo"
+                  minlength="3"
+                  maxlength="16"
+                  v-model="liderGrupo"
+                  required
+                />
+              </div>
+              <div class="form-group mb-3">
+                <label for="nombre">Nombre en discord + tag</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="discordLiderGrupo"
+                  name="discordLiderGrupo"
+                  v-model="discordLiderGrupo"
+                  placeholder="Ej. usuario#1234"
+                />
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Preferencias del grupo</legend>
 
-            <div class="form-group mb-3">
-              <label>Modo de juego</label>
-              <select class="form-select" v-model="seleccionModoJuego">
-                <option value="" disabled selected>
-                  Selecciona el modo de juego
-                </option>
-                <option value="casual">Casual</option>
-                <option value="competitivo">Competitivo</option>
-                <option value="dangerZone">Danger Zone</option>
-                <option value="deathmatch">Deathmatch</option>
-                <option value="deathmatch">Retake</option>
-                <option value="deathmatch">Demolición</option>
-              </select>
-            </div>
+              <!-- Título del grupo -->
+              <div class="form-group mb-3">
+                <label for="nombre">Título del grupo</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="tituloGrupo"
+                  name="tituloGrupo"
+                  placeholder="Titulo"
+                  v-model="tituloGrupo"
+                  maxlength="32"
+                  required
+                />
+              </div>
 
-            <div
-              class="form-group mb-3"
-              v-if="seleccionModoJuego === 'competitivo'"
-            >
-              <label>Rango competitivo</label>
-              <select class="form-select" name="rank">
-                <optgroup label="Rangos Bajos">
-                  <option value="silver1">Plata I</option>
-                  <option value="silver2">Plata II</option>
-                  <option value="silver3">Plata III</option>
-                  <option value="silver4">Plata IV</option>
-                  <option value="silverElite">Plata Elite</option>
-                  <option value="silverEliteMaster">
-                    Maestro de Élite de Plata
+              <div class="form-group mb-3">
+                <label>Modo de juego</label>
+                <select
+                  class="form-select"
+                  id="modoJuego"
+                  name="modoJuego"
+                  v-model="modoJuego"
+                  required
+                >
+                  <option value="" disabled selected>
+                    Selecciona el modo de juego
                   </option>
-                </optgroup>
+                  <option value="Casual">Casual</option>
+                  <option value="Competitivo">Competitivo</option>
+                  <option value="Deathmatch">Deathmatch</option>
+                  <option value="Retake">Retake</option>
+                  <option value="Demolición">Demolición</option>
+                </select>
+              </div>
 
-                <optgroup label="Rangos Medios">
-                  <option value="goldNova1">Oro Nova I</option>
-                  <option value="goldNova2">Oro Nova II</option>
-                  <option value="goldNova3">Oro Nova III</option>
-                  <option value="goldNovaMaster">Oro Nova Master</option>
-                  <option value="masterGuardian1">Guardián Maestro I</option>
-                  <option value="masterGuardian2">Guardián Maestro II</option>
-                </optgroup>
-
-                <optgroup label="Rangos Altos">
-                  <option value="masterGuardianElite">
-                    Maestro Guardián Elite
+              <div class="form-group mb-3" v-if="modoJuego === 'Competitivo'">
+                <label>Rango competitivo</label>
+                <select
+                  class="form-select select-rango"
+                  name="rangoCompetitivo"
+                  id="rangoCompetitivo"
+                  v-model="rangoCompetitivo"
+                  required
+                >
+                  <option value="" disabled selected>
+                    Selecciona el rango
                   </option>
-                  <option value="distinguishedMasterGuardian">
-                    Maestro Guardián Distinguido
+                  <optgroup label="Rangos Bajos">
+                    <option value="Plata I">Plata I</option>
+                    <option value="Plata II">Plata II</option>
+                    <option value="Plata III">Plata III</option>
+                    <option value="Plata IV">Plata IV</option>
+                    <option value="Plata Elite">Plata Elite</option>
+                    <option value="Maestro de Élite de Plata">
+                      Maestro de Élite de Plata
+                    </option>
+                  </optgroup>
+
+                  <optgroup label="Rangos Medios">
+                    <option value="Oro Nova I">Oro Nova I</option>
+                    <option value="Oro Nova II">Oro Nova II</option>
+                    <option value="Oro Nova III">Oro Nova III</option>
+                    <option value="Oro Nova Master">Oro Nova Master</option>
+                    <option value="Guardián Maestro I">
+                      Guardián Maestro I
+                    </option>
+                    <option value="Guardián Maestro II">
+                      Guardián Maestro II
+                    </option>
+                  </optgroup>
+
+                  <optgroup label="Rangos Altos">
+                    <option value="Maestro Guardián Elite">
+                      Maestro Guardián Elite
+                    </option>
+                    <option value="Maestro Guardián Distinguido">
+                      Maestro Guardián Distinguido
+                    </option>
+                    <option value="Águila Legendaria">Águila Legendaria</option>
+                    <option value="Águila Legendaria Maestra">
+                      Águila Legendaria Maestra
+                    </option>
+                    <option value="Maestro Supremo de Primera Clase">
+                      Maestro Supremo de Primera Clase
+                    </option>
+                    <option value="Elite Global">Elite Global</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <!-- Seleccion número de jugadores -->
+              <div class="form-group mb-3 mx-auto">
+                <label for="cantidad" class="d-block"
+                  >Número de jugadores requeridos</label
+                >
+
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="numeroJugadores"
+                  id="unJugador"
+                  value="1"
+                  autocomplete="off"
+                  checked
+                  v-model="numeroJugadores"
+                  required
+                />
+                <label class="btn col-3" for="unJugador">1</label>
+
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="numeroJugadores"
+                  id="dosJugadores"
+                  value="2"
+                  autocomplete="off"
+                  v-model="numeroJugadores"
+                  required
+                />
+                <label class="btn col-3" for="dosJugadores">2</label>
+
+                <input
+                  type="radio"
+                  class="btn-check"
+                  value="3"
+                  name="numeroJugadores"
+                  id="tresJugadores"
+                  autocomplete="off"
+                  v-model="numeroJugadores"
+                  required
+                />
+                <label class="btn col-3" for="tresJugadores">3</label>
+
+                <input
+                  type="radio"
+                  class="btn-check"
+                  value="4"
+                  name="numeroJugadores"
+                  id="cuatroJugadores"
+                  autocomplete="off"
+                  v-model="numeroJugadores"
+                  required
+                />
+                <label class="btn col-3" for="cuatroJugadores">4</label>
+              </div>
+
+              <!-- Seleccion región -->
+              <div class="form-group mb-3">
+                <label for="cantidad" class="d-block">Región</label>
+                <select
+                  class="form-select select-region"
+                  id="region"
+                  name="region"
+                  v-model="region"
+                  required
+                >
+                  <option value="" disabled selected>
+                    Selecciona la región
                   </option>
-                  <option value="legendaryEagle">Águila Legendaria</option>
-                  <option value="legendaryEagleMaster">
-                    Águila Legendaria Maestra
-                  </option>
-                  <option value="supremeMasterFirstClass">
-                    Maestro Supremo de Primera Clase
-                  </option>
-                  <option value="globalElite">Elite Global</option>
-                </optgroup>
-              </select>
-            </div>
-            <div
-              class="form-group mb-3"
-              v-if="seleccionModoJuego === 'dangerZone'"
-            >
-              <label>Rango Danger Zone</label>
-              <select class="form-select" name="rank">
-                <option value="" disabled selected>Selecciona el rango</option>
-                <option value="Rat 1">Rat 1</option>
-                <option value="Rat 2">Rat 2</option>
-                <option value="Hare 1">Hare 1</option>
-                <option value="Hare 2">Hare 2</option>
-                <option value="Scout 1">Scout 1</option>
-                <option value="Scout 2">Scout 2</option>
-                <option value="Scout Elite">Scout Elite</option>
-                <option value="Fox 1">Fox 1</option>
-                <option value="Fox 2">Fox 2</option>
-                <option value="Fox 3">Fox 3</option>
-                <option value="Fox Elite">Fox Elite</option>
-                <option value="Timber Wolf">Timber Wolf</option>
-                <option value="Ember Wolf">Ember Wolf</option>
-                <option value="Wildfire Wolf">Wildfire Wolf</option>
-                <option value="Howling Alpha">Howling Alpha</option>
-              </select>
-            </div>
+                  <option value="🇪🇺 Europa">🇪🇺 Europa</option>
+                  <option value="🇺🇸 Norteamérica">🇺🇸 Norteamérica</option>
+                  <option value="🇧🇷 Sudamérica">🇧🇷 Sudamérica</option>
+                  <option value="🇨🇳 Asia">🇨🇳 Asia</option>
+                  <option value="🇦🇺 Oceanía">🇦🇺 Oceanía</option>
+                  <option value="🇿🇦 África">🇿🇦 África</option>
+                  <option value="🇸🇦 Oriente Medio">🇸🇦 Oriente Medio</option>
+                </select>
+              </div>
 
-            <!-- Seleccion número de jugadores -->
-            <div class="form-group mb-3 mx-auto">
-              <label for="cantidad" class="d-block"
-                >Número de jugadores necesarios</label
-              >
+              <!-- Selección Micrófono  -->
+              <div class="form-group mb-3">
+                <label for="mensaje">Micrófono requerido</label>
+                <br />
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="microfono"
+                  id="microSi"
+                  value="Sí"
+                  autocomplete="off"
+                  v-model="microfonoRequerido"
+                  checked
+                />
+                <label class="btn col-6" for="microSi">Sí</label>
 
-              <input
-                type="radio"
-                class="btn-check"
-                name="numeroJugadores"
-                id="unJugador"
-                autocomplete="off"
-                checked
-              />
-              <label class="btn col-3" for="unJugador">1</label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="microfono"
+                  value="No"
+                  id="microNo"
+                  autocomplete="off"
+                  v-model="microfonoRequerido"
+                />
+                <label class="btn col-6" for="microNo">No</label>
+              </div>
 
-              <input
-                type="radio"
-                class="btn-check"
-                name="numeroJugadores"
-                id="dosJugadores"
-                autocomplete="off"
-              />
-              <label
-                class="btn col-3"
-                for="dosJugadores"
-                v-if="seleccionModoJuego !== 'dangerZone'"
-                >2</label
-              >
-
-              <input
-                type="radio"
-                class="btn-check"
-                name="numeroJugadores"
-                id="tresJugadores"
-                autocomplete="off"
-              />
-              <label
-                class="btn col-3"
-                for="tresJugadores"
-                v-if="seleccionModoJuego !== 'dangerZone'"
-                >3</label
-              >
-
-              <input
-                type="radio"
-                class="btn-check"
-                name="numeroJugadores"
-                id="cuatroJugadores"
-                autocomplete="off"
-              />
-              <label
-                class="btn col-3"
-                for="cuatroJugadores"
-                v-if="seleccionModoJuego !== 'dangerZone'"
-                >4</label
-              >
-            </div>
-
-            <!-- Seleccion región -->
-            <div class="form-group mb-3">
-              <label for="cantidad" class="d-block">Región</label>
-              <select class="form-select select-region">
-                <option value="" disabled selected>Selecciona la región</option>
-                <option value="eu">🇪🇺 Europa</option>
-                <option value="na">🇺🇸 Norteamérica</option>
-                <option value="sa">🇧🇷 Sudamérica</option>
-                <option value="asia">🇨🇳 Asia</option>
-                <option value="oce">🇦🇺 Oceanía</option>
-                <option value="afr">🇿🇦 África</option>
-                <option value="me">🇸🇦 Oriente Medio</option>
-              </select>
-            </div>
-
-            <!-- Selección Micrófono  -->
-            <div class="form-group mb-3">
-              <label for="mensaje">Micrófono requerido</label>
-              <br />
-              <input
-                type="radio"
-                class="btn-check"
-                name="microfono"
-                id="microSi"
-                autocomplete="off"
-                checked
-              />
-              <label
-                class="btn col-6"
-                for="microSi"
-                v-if="seleccionModoJuego !== 'dangerZone'"
-                >Sí</label
-              >
-
-              <input
-                type="radio"
-                class="btn-check"
-                name="microfono"
-                id="microNo"
-                autocomplete="off"
-              />
-              <label
-                class="btn col-6"
-                for="microNo"
-                v-if="seleccionModoJuego !== 'dangerZone'"
-                >No</label
-              >
-            </div>
-
-            <div class="form-group mb-3">
-              <label for="mensaje">Descripción:</label>
-              <textarea class="form-control" id="mensaje" rows="3"></textarea>
-            </div>
+              <!-- Descripción del grupo -->
+              <div class="form-group mb-3">
+                <label for="mensaje">Descripción:</label>
+                <textarea
+                  class="form-control"
+                  id="mensaje"
+                  rows="3"
+                  v-model="descripcion"
+                ></textarea>
+              </div>
+            </fieldset>
             <button
               type="submit"
-              class="btn btn-primary btn-dark boton-guardar"
+              class="btn boton-guardar"
               style="margin-left: 2rem"
             >
-              Guardar
+              Crear grupo
             </button>
           </form>
         </div>
@@ -243,15 +483,111 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "CounterStrike",
   data() {
     return {
-      seleccionModoJuego: "",
-      subseleccion: "",
+      gruposCounterStrike: "http://localhost:8081/nexo/gruposCounterStrike",
+      postsGrupos: [],
+      idgrupo: "",
+      tituloGrupo: "",
+      modoJuego: "",
+      rangoCompetitivo: "",
+      numeroJugadores: "1",
+      region: "",
+      microfonoRequerido: "Sí",
+      descripcion: "",
+      liderGrupo: "",
+      jugador1: "",
+      jugador2: "",
+      jugador3: "",
+      jugador4: "",
+      discordLiderGrupo: "",
+      discordJugador1: "",
+      discordJugador2: "",
+      discordJugador3: "",
+      discordJugador4: "",
+      fechaCreacion: "",
+      grupoActivo: "",
     };
   },
-  // Aquí van las propiedades, métodos, etc.
+  methods: {
+    async guardarGrupo() {
+      this.fechaCreacion = new Date().toISOString();
+      try {
+        const response = await axios.post(this.gruposCounterStrike, {
+          tituloGrupo: this.tituloGrupo,
+          modoJuego: this.modoJuego,
+          rangoCompetitivo: this.rangoCompetitivo,
+          numeroJugadores: this.numeroJugadores,
+          region: this.region,
+          microfonoRequerido: this.microfonoRequerido,
+          descripcion: this.descripcion,
+          liderGrupo: this.liderGrupo,
+          fechaCreacion: this.fechaCreacion,
+          discordLiderGrupo: this.discordLiderGrupo,
+          nombreEnJuegoLiderGrupo: this.nombreEnJuegoLiderGrupo,
+        });
+        console.log(response);
+        this.tituloGrupo = "";
+        this.nombreLiderGrupo = "";
+        this.discordLiderGrupo = "";
+        this.modoJuego = "";
+        this.rangoCompetitivo = "";
+        this.numeroJugadores = "1";
+        this.region = "";
+        this.microfonoRequerido = "Si";
+        this.descripcion = "";
+        this.liderGrupo = "";
+        this.fechaCreacion = "";
+
+        this.listarGrupos(); // Actualiza la lista de grupos
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async modificarGrupo() {
+      try {
+        const response = await axios.put(
+          this.gruposCounterStrike + "/" + this.idgrupo,
+          {
+            jugador1: this.jugador1,
+            jugador2: this.jugador2,
+            jugador3: this.jugador3,
+            jugador4: this.jugador4,
+            discordJugador1: this.discordJugador1,
+            discordJugador2: this.discordJugador2,
+            discordJugador3: this.discordJugador3,
+            discordJugador4: this.discordJugador4,
+          }
+        );
+        console.log(response);
+        this.listarGrupos(); // Actualiza la lista de grupos
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    listarGrupos() {
+      axios
+        .get(this.gruposCounterStrike)
+        .then((response) => {
+          this.postsGrupos = response.data;
+        })
+        .catch((e) => {
+          this.errors.push(e);
+        });
+    },
+
+    comprobarJugador(jugador) {
+      return jugador != null && jugador != "" ? true : false;
+    },
+  },
+  mounted() {
+    this.listarGrupos();
+  },
 };
 </script>
 
