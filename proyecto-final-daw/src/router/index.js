@@ -9,7 +9,6 @@ import Dota2 from "@/views/dota2.vue";
 import Overwatch from "@/views/overwatch.vue";
 import RainbowSix from "@/views/rainbow-six.vue";
 import Fortnite from "@/views/fortnite.vue";
-import AcercaDe from "@/views/acerca-de.vue";
 
 const routes = [
   // Vista de inicio
@@ -83,14 +82,6 @@ const routes = [
     component: Fortnite,
     meta: {
       title: "Fortnite",
-    },
-  },
-  {
-    path: "/acerca-de",
-    name: "AcercaDe",
-    component: AcercaDe,
-    meta: {
-      title: "Acerca de",
     },
   },
 ];

@@ -6,11 +6,6 @@
         <router-link to="/" class="navbar-brand">
           <h1 class="logo">NEXO</h1>
         </router-link>
-        <div class="navbar-nav ms-auto">
-          <router-link class="nav-link" to="/acerca-de"
-            >Acerca de</router-link
-          >
-        </div>
       </div>
     </nav>
     <!-- Contenido principal -->
