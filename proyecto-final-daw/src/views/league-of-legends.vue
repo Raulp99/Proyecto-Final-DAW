@@ -713,8 +713,13 @@ export default {
   height: 40vh;
   background-image: url(@/assets/img/league-of-legends/lol-card-image.png);
   background-position: center;
-  background-position-y: -240px;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+@media only screen and (min-width: 992px) {
+  .contenedor-header-league-of-legends {
+    background-position-y: -240px;
+  }
 }
 </style>

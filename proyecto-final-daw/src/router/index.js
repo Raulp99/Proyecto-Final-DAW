@@ -9,8 +9,7 @@ import Dota2 from "@/views/dota2.vue";
 import Overwatch from "@/views/overwatch.vue";
 import RainbowSix from "@/views/rainbow-six.vue";
 import Fortnite from "@/views/fortnite.vue";
-import FormInicioSesion from "@/views/formulario-inicio-sesion.vue";
-import FormRegistro from "@/views/formulario-registro.vue";
+import AcercaDe from "@/views/acerca-de.vue";
 
 const routes = [
   // Vista de inicio
@@ -87,19 +86,11 @@ const routes = [
     },
   },
   {
-    path: "/formulario-inicio-sesion",
-    name: "FormInicioSesion",
-    component: FormInicioSesion,
+    path: "/acerca-de",
+    name: "AcercaDe",
+    component: AcercaDe,
     meta: {
-      title: "NEXO Iniciar sesión",
-    },
-  },
-  {
-    path: "/formulario-registro",
-    name: "FormRegistro",
-    component: FormRegistro,
-    meta: {
-      title: "NEXO Registro",
+      title: "Acerca de",
     },
   },
 ];

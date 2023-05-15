@@ -467,7 +467,6 @@
                   name="numeroJugadores"
                   id="unJugador"
                   value="1"
-                  autocomplete="off"
                   checked
                   v-model="numeroJugadores"
                   required
@@ -480,7 +479,6 @@
                   name="numeroJugadores"
                   id="dosJugadores"
                   value="2"
-                  autocomplete="off"
                   v-model="numeroJugadores"
                   required
                 />
@@ -492,7 +490,6 @@
                   value="3"
                   name="numeroJugadores"
                   id="tresJugadores"
-                  autocomplete="off"
                   v-model="numeroJugadores"
                   required
                 />
@@ -504,7 +501,6 @@
                   value="4"
                   name="numeroJugadores"
                   id="cuatroJugadores"
-                  autocomplete="off"
                   v-model="numeroJugadores"
                   required
                 />
@@ -544,7 +540,6 @@
                   name="microfono"
                   id="microSi"
                   value="Sí"
-                  autocomplete="off"
                   v-model="microfonoRequerido"
                   checked
                 />
@@ -556,7 +551,6 @@
                   name="microfono"
                   value="No"
                   id="microNo"
-                  autocomplete="off"
                   v-model="microfonoRequerido"
                 />
                 <label class="btn col-6" for="microNo">No</label>
@@ -635,7 +629,6 @@ export default {
           discordLiderGrupo: this.discordLiderGrupo,
           nombreEnJuegoLiderGrupo: this.nombreEnJuegoLiderGrupo,
           grupoActivo: this.grupoActivo,
-
         });
         console.log(response);
         this.tituloGrupo = "";
@@ -745,6 +738,11 @@ export default {
   background-image: url(@/assets/img/counter-strike/fondo-counter-strike.jpg);
   background-position: center;
   background-size: cover;
-  background-position: 0px -200px;
+}
+
+@media only screen and (min-width: 992px) {
+  .contenedor-header-counter-strike {
+    background-position-y: -200px;
+  }
 }
 </style>

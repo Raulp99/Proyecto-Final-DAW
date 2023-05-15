@@ -446,7 +446,6 @@
                   name="numeroJugadores"
                   id="unJugador"
                   value="1"
-                  autocomplete="off"
                   checked
                   v-model="numeroJugadores"
                   required
@@ -459,7 +458,6 @@
                   name="numeroJugadores"
                   id="dosJugadores"
                   value="2"
-                  autocomplete="off"
                   v-model="numeroJugadores"
                   required
                 />
@@ -471,7 +469,6 @@
                   value="3"
                   name="numeroJugadores"
                   id="tresJugadores"
-                  autocomplete="off"
                   v-model="numeroJugadores"
                   required
                 />
@@ -483,7 +480,6 @@
                   value="4"
                   name="numeroJugadores"
                   id="cuatroJugadores"
-                  autocomplete="off"
                   v-model="numeroJugadores"
                   required
                 />

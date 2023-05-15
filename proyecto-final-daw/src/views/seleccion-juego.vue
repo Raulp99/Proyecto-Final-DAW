@@ -25,10 +25,7 @@
           </div>
         </router-link>
         <!-- Juego 2 -->
-        <router-link
-          to="/counter-strike"
-          class="col-xl-3 col-md-6 mb-4 juego"
-        >
+        <router-link to="/counter-strike" class="col-xl-3 col-md-6 mb-4 juego">
           <div class="card border-0 shadow csgo h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">
@@ -46,10 +43,7 @@
           </div>
         </router-link>
         <!-- Juego 4 -->
-        <router-link
-          to="/apex-legends"
-          class="col-xl-3 col-md-6 mb-4 juego"
-        >
+        <router-link to="/apex-legends" class="col-xl-3 col-md-6 mb-4 juego">
           <div class="card border-0 shadow apex h-100">
             <div class="card-body text-center">
               <p class="card-title mb-0 titulo">Apex legends</p>
@@ -130,6 +124,7 @@ export default {
   color: #fff;
   margin-left: 5%;
   margin-right: 5%;
+  margin-top: 1rem;
 }
 .texto-header h1 {
   font-size: 4rem;
@@ -251,7 +246,6 @@ export default {
     margin-left: 16%;
     max-width: 50%;
     margin-top: 2%;
-
   }
 }
 </style>

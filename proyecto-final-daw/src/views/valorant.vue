@@ -443,7 +443,6 @@
                   name="numeroJugadores"
                   id="unJugador"
                   value="1"
-                  autocomplete="off"
                   checked
                   v-model="numeroJugadores"
                   required
@@ -456,7 +455,6 @@
                   name="numeroJugadores"
                   id="dosJugadores"
                   value="2"
-                  autocomplete="off"
                   v-model="numeroJugadores"
                   required
                 />
@@ -468,7 +466,6 @@
                   value="3"
                   name="numeroJugadores"
                   id="tresJugadores"
-                  autocomplete="off"
                   v-model="numeroJugadores"
                   required
                 />
@@ -480,7 +477,6 @@
                   value="4"
                   name="numeroJugadores"
                   id="cuatroJugadores"
-                  autocomplete="off"
                   v-model="numeroJugadores"
                   required
                 />
@@ -519,7 +515,6 @@
                   name="microfono"
                   id="microSi"
                   value="Sí"
-                  autocomplete="off"
                   v-model="microfonoRequerido"
                   checked
                 />
@@ -531,7 +526,6 @@
                   name="microfono"
                   value="No"
                   id="microNo"
-                  autocomplete="off"
                   v-model="microfonoRequerido"
                 />
                 <label class="btn col-6" for="microNo">No</label>
@@ -610,7 +604,6 @@ export default {
           discordLiderGrupo: this.discordLiderGrupo,
           nombreEnJuegoLiderGrupo: this.nombreEnJuegoLiderGrupo,
           grupoActivo: this.grupoActivo,
-
         });
         console.log(response);
         this.tituloGrupo = "";

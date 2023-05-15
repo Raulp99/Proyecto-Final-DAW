@@ -7,12 +7,9 @@
           <h1 class="logo">NEXO</h1>
         </router-link>
         <div class="navbar-nav ms-auto">
-          <router-link class="nav-link" to="/formulario-inicio-sesion"
+          <router-link class="nav-link" to="/acerca-de"
             >Acerca de</router-link
           >
-          <!-- <router-link class="nav-link" to="/formulario-registro"
-            >Registrarse</router-link
-          > -->
         </div>
       </div>
     </nav>
@@ -44,25 +41,25 @@
           >
             <a href="https://www.facebook.com/" target="_blank">
               <img
-                src="@/assets/img/social-media/facebook_icon.png"
+                src="@/assets/img/social-media/facebook-icon.png"
                 alt="Facebook"
               />
             </a>
             <a href="https://telegram.org/" target="_blank">
               <img
-                src="@/assets/img/social-media/telegram_icon.png"
+                src="@/assets/img/social-media/telegram-icon.png"
                 alt="Telegram"
               />
             </a>
             <a href="https://twitter.com/" target="_blank">
               <img
-                src="@/assets/img/social-media/twitter_icon.png"
+                src="@/assets/img/social-media/twitter-icon.png"
                 alt="Twitter"
               />
             </a>
             <a href="https://www.whatsapp.com/" target="_blank">
               <img
-                src="@/assets/img/social-media/whatsapp_icon.png"
+                src="@/assets/img/social-media/whatsapp-icon.png"
                 alt="WhatsApp"
               />
             </a>
